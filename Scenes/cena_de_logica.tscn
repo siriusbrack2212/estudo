@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dowfbjt05y22x"]
+
+[ext_resource type="Script" path="res://scripts/cena_de_logica.gd" id="1_edvey"]
+
+[node name="CenaDeLogica" type="Node2D"]
+script = ExtResource("1_edvey")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Node2" type="Node" parent="."]
