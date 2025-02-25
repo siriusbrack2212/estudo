@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl2qsajo71ilf"]
+
+[ext_resource type="Texture2D" uid="uid://k3wayfd85vx0" path="res://assets/adventurer-Sheet.png" id="1_okqip"]
+[ext_resource type="Script" path="res://scripts/node_state_machine.gd" id="2_0errc"]
+[ext_resource type="Script" path="res://Scenes/idle_state.gd" id="3_v3ucg"]
+[ext_resource type="Script" path="res://Scenes/walk.gd" id="4_viljk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yykk7"]
+size = Vector2(19, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbqgt"]
+atlas = ExtResource("1_okqip")
+region = Rect2(0, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy0he"]
+atlas = ExtResource("1_okqip")
+region = Rect2(50, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpfpj"]
+atlas = ExtResource("1_okqip")
+region = Rect2(100, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk743"]
+atlas = ExtResource("1_okqip")
+region = Rect2(150, 0, 50, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8cv0a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbqgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uy0he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpfpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk743")
+}],
+"loop": true,
+"name": &"Idle_animation",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"run_animation",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 4.5)
+shape = SubResource("RectangleShape2D_yykk7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8cv0a")
+animation = &"Idle_animation"
+autoplay = "run_animation"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_okqip")
+hframes = 7
+vframes = 11
+
+[node name="State_machine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("2_0errc")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State_machine" node_paths=PackedStringArray("player", "animador")]
+script = ExtResource("3_v3ucg")
+player = NodePath("../..")
+animador = NodePath("../../AnimatedSprite2D")
+
+[node name="walk" type="Node" parent="State_machine" node_paths=PackedStringArray("player", "animador")]
+script = ExtResource("4_viljk")
+player = NodePath("../..")
+animador = NodePath("../../AnimatedSprite2D")
