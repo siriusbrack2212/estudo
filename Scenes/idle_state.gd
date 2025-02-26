@@ -22,6 +22,8 @@ func _on_physics_process(_delta : float) -> void:
 func _on_next_transitions() -> void:
 	if Input.get_axis("lado_esquerdo","lado_direito"):
 		transition.emit("walk")
+	if !player.is_on_floor():
+		transition.emit("faling")	
 
 
 func _on_enter() -> void:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl2qsajo71ilf"]
+[gd_scene load_steps=12 format=3 uid="uid://bl2qsajo71ilf"]
 
 [ext_resource type="Texture2D" uid="uid://k3wayfd85vx0" path="res://assets/adventurer-Sheet.png" id="1_okqip"]
 [ext_resource type="Script" path="res://scripts/node_state_machine.gd" id="2_0errc"]
 [ext_resource type="Script" path="res://Scenes/idle_state.gd" id="3_v3ucg"]
 [ext_resource type="Script" path="res://Scenes/walk.gd" id="4_viljk"]
+[ext_resource type="Script" path="res://Scenes/faling.gd" id="5_mgrvm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yykk7"]
 size = Vector2(19, 29)
@@ -77,5 +78,10 @@ animador = NodePath("../../AnimatedSprite2D")
 
 [node name="walk" type="Node" parent="State_machine" node_paths=PackedStringArray("player", "animador")]
 script = ExtResource("4_viljk")
+player = NodePath("../..")
+animador = NodePath("../../AnimatedSprite2D")
+
+[node name="faling" type="Node" parent="State_machine" node_paths=PackedStringArray("player", "animador")]
+script = ExtResource("5_mgrvm")
 player = NodePath("../..")
 animador = NodePath("../../AnimatedSprite2D")
