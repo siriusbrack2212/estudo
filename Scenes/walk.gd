@@ -13,10 +13,13 @@ func _on_physics_process(_delta : float) -> void:
 	var direcao = Input.get_axis("lado_esquerdo","lado_direito")
 	if direcao:
 		player.velocity.x =  direcao* SPEED
-		print(player.velocity)
 	else:
 		player.velocity.x = move_toward(player.velocity.x,0,SPEED)
-	
+	print(player.velocity)	
+		
+
+	_on_enter()
+	_on_exit()
 	player.move_and_slide()
 
 		
@@ -27,10 +30,21 @@ func _on_physics_process(_delta : float) -> void:
 func _on_next_transitions() -> void:
 	if !player.is_on_floor():
 		transition.emit("faling")
+		print("trocou para caindo")
+	elif player.velocity.x == 0:
+		transition.emit("Idle")
 
 
 func _on_enter() -> void:
-	pass
+	if player.velocity.x>0:
+		animador.flip_h = false
+		animador.play("run_animation")
+	elif player.velocity.x < 0:
+		animador.flip_h = true
+		animador.play("run_animation")
+	
+	
+	
 
 
 func _on_exit() -> void:
