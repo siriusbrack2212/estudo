@@ -23,9 +23,16 @@ func _on_next_transitions() -> void:
 	if Input.get_axis("lado_esquerdo","lado_direito"):
 		transition.emit("walk")
 	if !player.is_on_floor():
+<<<<<<< HEAD
 		transition.emit("faling")
 		print("trocou")
+	if Input.is_action_just_pressed("pulo"):
+		transition.emit("jumping")
+=======
+		transition.emit("faling")	
 
+
+>>>>>>> parent of e84c9ee (consertei o estado caindo e animei)
 func _on_enter() -> void:
 	if player.is_on_floor():
 		animador.play("Idle_animation")	
