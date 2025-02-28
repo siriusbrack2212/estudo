@@ -13,8 +13,7 @@ func _on_process(_delta : float) -> void:
 
 
 func _on_physics_process(_delta : float) -> void:
-	if !player.is_on_floor():
-		player.velocity.y += gravity*_delta
+
 	_on_enter()
 	player.move_and_slide()
 
@@ -23,16 +22,11 @@ func _on_next_transitions() -> void:
 	if Input.get_axis("lado_esquerdo","lado_direito"):
 		transition.emit("walk")
 	if !player.is_on_floor():
-<<<<<<< HEAD
 		transition.emit("faling")
 		print("trocou")
-	if Input.is_action_just_pressed("pulo"):
-		transition.emit("jumping")
-=======
-		transition.emit("faling")	
+	if  Input.is_action_just_pressed("pulo"):	
+		transition.emit("jump")
 
-
->>>>>>> parent of e84c9ee (consertei o estado caindo e animei)
 func _on_enter() -> void:
 	if player.is_on_floor():
 		animador.play("Idle_animation")	
