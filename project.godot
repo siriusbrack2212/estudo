@@ -12,12 +12,8 @@ config_version=5
 
 config/name="estudo"
 run/main_scene="res://Scenes/cena_de_logica.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://assets/icon.svg"
-
-[display]
-
-window/size/viewport_width=720
 
 [input]
 

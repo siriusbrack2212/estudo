@@ -1,11 +1,11 @@
 [gd_scene load_steps=37 format=3 uid="uid://bl2qsajo71ilf"]
 
 [ext_resource type="Texture2D" uid="uid://k3wayfd85vx0" path="res://assets/adventurer-Sheet.png" id="1_okqip"]
-[ext_resource type="Script" path="res://scripts/node_state_machine.gd" id="2_0errc"]
-[ext_resource type="Script" path="res://scripts/idle_state.gd" id="3_v3ucg"]
-[ext_resource type="Script" path="res://scripts/walk.gd" id="4_viljk"]
-[ext_resource type="Script" path="res://scripts/faling.gd" id="5_mgrvm"]
-[ext_resource type="Script" path="res://Scenes/jump.gd" id="6_1cu44"]
+[ext_resource type="Script" uid="uid://ca2tt4p4ve77x" path="res://scripts/node_state_machine.gd" id="2_0errc"]
+[ext_resource type="Script" uid="uid://dekrnrf0tuba7" path="res://scripts/idle_state.gd" id="3_v3ucg"]
+[ext_resource type="Script" uid="uid://bky06xpkq1mmh" path="res://scripts/walk.gd" id="4_viljk"]
+[ext_resource type="Script" uid="uid://dgnra0tm3inkp" path="res://scripts/faling.gd" id="5_mgrvm"]
+[ext_resource type="Script" uid="uid://5phf5wrmlkpc" path="res://Scenes/jump.gd" id="6_1cu44"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yykk7"]
 size = Vector2(19, 29)
@@ -237,6 +237,7 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
