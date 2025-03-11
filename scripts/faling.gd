@@ -26,7 +26,7 @@ func _on_next_transitions() -> void:
 func _on_enter() -> void:
 	
 	animador.play("faling_animation")
-	print("entrou no estado")
+	
 
 func _on_exit() -> void:
 	pass

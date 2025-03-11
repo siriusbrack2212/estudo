@@ -15,7 +15,7 @@ func _on_physics_process(_delta : float) -> void:
 		player.velocity.x =  direcao* SPEED
 	else:
 		player.velocity.x = move_toward(player.velocity.x,0,SPEED)
-	print(player.velocity)	
+	
 		
 
 	_on_enter()
